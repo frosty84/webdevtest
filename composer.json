@@ -1,0 +1,16 @@
+{
+    "name": "webdev/test",
+    "description": "Pinguin AG WebDevTest 2016",
+    "type": "library",
+    "require": {
+        "twbs/bootstrap": "^3.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vitalii Bondarenko",
+            "email": "vitalii.bondarenko.dev@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
