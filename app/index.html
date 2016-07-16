@@ -16,17 +16,39 @@
     <link href="styles/bootstrap.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="styles/main.css" rel="stylesheet">
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
     <!-- jQuery -->
-    <script src="scripts/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <!-- Small Cookies plugin -->
+    <script src="scripts/jquery.cookie.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="scripts/bootstrap.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <!-- Custom one -->
+    <script src="scripts/main.js"></script>
     <!-- Your styles -->
     <link rel="stylesheet" href="styles/main.css">
     <!--Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
   </head>
   <body>
+  <!-- Add new user dialog -->
+  <div id="dialog-form" title="Create new user">
+    <div id="error"></div>
+    <p class="validateTips">All form fields are required.</p>
+
+    <form id="dialog-form-form">
+      <fieldset>
+
+
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+      </fieldset>
+    </form>
+  </div>
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top container" role="navigation">
     <div class="container">
