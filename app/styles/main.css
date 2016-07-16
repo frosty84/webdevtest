@@ -37,8 +37,19 @@ footer {
 }
 
 /* Custom stuff */
+
 .navbar-inverse {
   background-color: #dcded9;
   border-color: #dcded9;
   opacity: 0.8;
+}
+
+img.resize{
+  max-width: 100%; height: auto;
+}
+
+
+.container {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
