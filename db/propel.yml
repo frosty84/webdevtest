@@ -1,0 +1,18 @@
+propel:
+    database:
+        connections:
+            hellofresh:
+                adapter: mysql
+                dsn: mysql:host=localhost;dbname=hellofresh
+                user: hellofresh
+                password: hellofresh
+                settings:
+                    charset: utf8
+    runtime:
+          defaultConnection: hellofresh
+          connections:
+              - hellofresh
+    generator:
+          defaultConnection: hellofresh
+          connections:
+              - hellofresh

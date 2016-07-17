@@ -3,7 +3,14 @@
     "description": "Pinguin AG WebDevTest 2016",
     "type": "library",
     "require": {
-        "twbs/bootstrap": "^3.3"
+        "propel/propel": "^2.0@alpha"
+    },
+    "autoload": {
+        "psr-4": {
+            "webdev\\src\\": "src/",
+            "db\\": "db/generated-classes"
+        },
+        "files": ["src/helpers.php"]
     },
     "license": "MIT",
     "authors": [
