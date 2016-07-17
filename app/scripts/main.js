@@ -42,7 +42,7 @@ $(document).ready(function() {
         }
     }
 
-    function addUser() {
+    function sendForm() {
         var valid = true;
         allFields.removeClass( "ui-state-error" );
 
@@ -73,25 +73,25 @@ $(document).ready(function() {
         success:function(data) {
             for (var el in data){
                 var field = data[el];
-                var label = $("<label/>").text(field.label);
-                var field = $('<input/>').attr({ type: 'text', id: field.name, name: field.name })
-                $( "#dialog-form" ).append(label, field);
+                var row = $("<div>").attr({ class: 'row' });
+                var cleft = $("<div>").attr({ class: 'col-sm-6 col-padding' });
+                var cright = $("<div>").attr({ class: 'col-sm-6 col-padding' });
+                var label = $("<label/>").attr({ class: 'form-label' }).text(field.label);
+                var field = $('<input/>').attr({ type: 'text', id: field.name, name: field.name, class: 'form-text' })
+
+                cleft.append(label).appendTo(row);
+                cright.append(field).appendTo(row);
+                $( "#dialog-form-form fieldset" ).append(row);
             }
-            $( "#dialog-form" ).append(label, field);
         }
     });
 
     dialog = $( "#dialog-form" ).dialog({
         autoOpen: false,
-        height: 400,
-        width: 350,
+        height: 'auto',
+        width: 750,
         modal: true,
-        buttons: {
-            "Create an account": addUser,
-            Cancel: function() {
-                dialog.dialog( "close" );
-            }
-        },
+        dialogClass: 'no-title',
         close: function() {
             form[ 0 ].reset();
             allFields.removeClass( "ui-state-error" );
@@ -100,7 +100,7 @@ $(document).ready(function() {
 
     form = dialog.find( "form" ).on( "submit", function( event ) {
         event.preventDefault();
-        addUser();
+        sendForm();
     });
 
     //if (visited == null) {
