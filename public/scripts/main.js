@@ -16,7 +16,6 @@ $(document).ready(function() {
             url: 'formSubmit.php',
             data: formData,
             success: function (data) {
-                alert(data);
                 $( "#dialog-form" ).dialog('close');
             },
             dataType: 'json'
@@ -49,7 +48,7 @@ $(document).ready(function() {
                 cleft.append(label).appendTo(row);
                 cright_inner.append(field);
                 cright_inner.append(field).appendTo(row);
-                $( "#contact-title-row" ).after(row);
+                $( "#contact-submit-row" ).before(row);
             }
         }
     });
@@ -84,7 +83,10 @@ $(document).ready(function() {
             email: {
                 required: true,
                 email: true
-            },
+            }
+        },
+        messages: {
+            email: "Correct email is required"
         },
         submitHandler: function(form, event) {
             event.preventDefault();

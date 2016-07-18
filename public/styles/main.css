@@ -1,103 +1,137 @@
 html, body {
-  font-family: "Open Sans" !important;
-  margin: 0;
-  padding: 0;
+    font-family: "Open Sans" !important;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
 
 .business-header {
-  height: 400px;
-  background: url('../images/background.jpg') right center no-repeat scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  position: relative;
-  top: -50px;
+    height: 400px;
+    background: url('../images/background.jpg') right center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+    top: -50px;
 }
 
 /* Customize the text color and shadow color and to optimize text legibility. */
 
 .tagline {
-  text-shadow: 0 0 10px #000;
-  color: #fff;
+    text-shadow: 0 0 10px #000;
+    color: #fff;
 }
 
 .img-center {
-  margin: 0 auto;
+    margin: 0 auto;
 }
 
 footer {
-  margin: 50px 0;
+    margin: 50px 0;
 }
 
 /* Custom stuff */
 
 .navbar-inverse {
-  background-color: #dcded9;
-  border-color: #dcded9;
-  opacity: 0.8;
+    background-color: #dcded9;
+    border-color: #dcded9;
+    opacity: 0.8;
 }
 
-img.resize{
-  max-width: 100%; height: auto;
+img.resize {
+    max-width: 100%;
+    height: auto;
 }
-
 
 .container {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 
 /* Add User dialog */
-label, input { display:block; }
-.ui-dialog .ui-state-error { padding: .3em; }
-.welcome { font-size: x-large }
+label, input {
+    display: block;
+}
+
+.ui-dialog .ui-state-error {
+    padding: .3em;
+}
+
+.welcome {
+    font-size: x-large
+}
+
 label.form-label {
     font-size: smaller;
     width: 100px;
-    text-align:right;
+    text-align: right;
     font-weight: normal;
 }
+
 input.form-text {
     font-size: smaller;
     font-weight: normal;
 }
-p.contact-title { font-size: large }
-input.form-text { width: 130px;}
-div.no-padding { padding: 0px;}
-div.align-right { position: relative; text-align: right;}
-.no-title .ui-dialog-titlebar { display:none }
-form#dialog-form-form{
+
+p.contact-title {
+    font-size: large
+}
+
+input.form-text {
+    width: 130px;
+}
+
+div.no-padding {
     padding: 0px;
 }
-input#send-form{
+
+div.align-right {
+    position: relative;
+    text-align: right;
+}
+
+.no-title .ui-dialog-titlebar {
+    display: none
+}
+
+form#dialog-form-form {
+    padding: 0px;
+}
+
+input#send-form {
     position: absolute;
     right: 0px;
 }
+
 div#dialog-form div.row {
     margin: 0px;
 }
+
 div.col-padding {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
 label.error {
     font-size: x-small;
     color: red;
 }
-#error {
-  display: none;
-  font-weight: bold;
-  color: #ff0000;
+
+label#error {
+    display: none;
+    font-weight: bold;
+    color: #ff0000;
+    width: 130px;
 }
-input#send-form, input.form-text{
+
+input#send-form, input.form-text {
     color: #333333;
-    background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
     border: solid 1px #333333;
 }
