@@ -78,7 +78,7 @@ abstract class ContactQuery extends ModelCriteria
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'hellofresh', $modelName = '\\Contact', $modelAlias = null)
+    public function __construct($dbName = 'webdevtest', $modelName = '\\Contact', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }

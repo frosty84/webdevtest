@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     // contact jQuery dialog
     var dialog;
     // check cookie
@@ -35,15 +36,20 @@ $(document).ready(function() {
         success:function(data) {
             for (var el in data){
                 var field = data[el];
-                var row = $("<div>").attr({ class: 'row' });
-                var cleft = $("<div>").attr({ class: 'col-sm-6 col-padding' });
-                var cright = $("<div>").attr({ class: 'col-sm-6 col-padding' });
-                var label = $("<label/>").attr({ class: 'form-label' }).text(field.label);
-                var field = $('<input/>').attr({ type: 'text', id: field.name, name: field.name, class: 'form-text' })
+                var row     = $("<div>").attr({ class: 'row' });
+                var cempty   = $("<div>").attr({ class: 'col-sm-3 col-padding' });
+                var cleft   = $("<div>").attr({ class: 'col-sm-4 text-right col-padding' });
+                var cright  = $("<div>").attr({ class: 'col-sm-5 col-padding' });
+                var cright_inner = $("<div>").attr({ class: 'pull-right' });
 
+                var label = $("<label/>").attr({ class: 'form-label' }).text(field.label);
+                var field = $('<input/>').attr({ type: 'text', id: field.name, name: field.name, class: 'form-text', required: true, maxtength: 100})
+
+                cempty.appendTo(row);
                 cleft.append(label).appendTo(row);
-                cright.append(field).appendTo(row);
-                $( "#dialog-form-form fieldset" ).append(row);
+                cright_inner.append(field);
+                cright_inner.append(field).appendTo(row);
+                $( "#contact-title-row" ).after(row);
             }
         }
     });
@@ -71,22 +77,29 @@ $(document).ready(function() {
     /**
      * Prepare data for fubmit
      */
-    form = dialog.find( "form" ).on( "submit", function( event ) {
-        event.preventDefault();
+    $('#dialog-form-form').validate({
+        rules: {
+            name: "required",
+            surname: "required",
+            email: {
+                required: true,
+                email: true
+            },
+        },
+        submitHandler: function(form, event) {
+            event.preventDefault();
+            var formData = {};
+            $("form :input[type=text]").each(function(){
+                formData[$(this).attr('name')] = $(this).val();
+            });
 
-        var form = $( this );
-        var formData = {};
-        $("form :input[type=text]").each(function(){
-            formData[$(this).attr('name')] = $(this).val();
-        });
-
-        sendForm(formData, dialog);
+            sendForm(formData, dialog);
+        }
     });
 
     // Check first time visit
     //if (visited == null) {
     if (true) {
-        //$('.newsletter_layer').show();
         dialog.dialog( "open" );
     }
 

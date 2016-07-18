@@ -1,18 +1,18 @@
 propel:
     database:
         connections:
-            hellofresh:
+            webdevtest:
                 adapter: mysql
-                dsn: mysql:host=localhost;dbname=hellofresh
-                user: hellofresh
-                password: hellofresh
+                dsn: mysql:host=localhost;dbname=webdevtest
+                user: webdevtest
+                password: webdevtest
                 settings:
                     charset: utf8
     runtime:
-          defaultConnection: hellofresh
+          defaultConnection: webdevtest
           connections:
-              - hellofresh
+              - webdevtest
     generator:
-          defaultConnection: hellofresh
+          defaultConnection: webdevtest
           connections:
-              - hellofresh
+              - webdevtest

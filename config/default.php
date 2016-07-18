@@ -9,6 +9,6 @@
 
 $defaultConfig = [
     'application' => [
-        'name' => 'HelloFresh Code Test',
+        'name' => 'Web Dev Test App',
     ],
 ];

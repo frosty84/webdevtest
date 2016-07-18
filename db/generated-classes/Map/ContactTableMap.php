@@ -39,7 +39,7 @@ class ContactTableMap extends TableMap
     /**
      * The default database name for this class
      */
-    const DATABASE_NAME = 'hellofresh';
+    const DATABASE_NAME = 'webdevtest';
 
     /**
      * The table name for this class
