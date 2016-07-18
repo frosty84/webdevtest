@@ -1,8 +1,14 @@
 $(document).ready(function() {
+    // contact jQuery dialog
     var dialog;
     // check cookie
     var visited = $.cookie("visited")
 
+    /**
+     * Submit contact form with ajax
+     * @param formData
+     * @param dialog
+     */
     function sendForm(formData, dialog) {
         $.ajax({
             type: "POST",
@@ -19,6 +25,9 @@ $(document).ready(function() {
         });
     }
 
+    /**
+     * Get list of fields with ajax
+     */
     $.ajax({
         url:'formFields.php',
         type:'get',
@@ -39,6 +48,10 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Init jQuery dialog
+     * @type {*|jQuery}
+     */
     dialog = $( "#dialog-form" ).dialog({
         autoOpen: false,
         height: 'auto',
@@ -55,6 +68,9 @@ $(document).ready(function() {
         }
     });
 
+    /**
+     * Prepare data for fubmit
+     */
     form = dialog.find( "form" ).on( "submit", function( event ) {
         event.preventDefault();
 
@@ -67,6 +83,7 @@ $(document).ready(function() {
         sendForm(formData, dialog);
     });
 
+    // Check first time visit
     //if (visited == null) {
     if (true) {
         //$('.newsletter_layer').show();
