@@ -9,18 +9,11 @@ load_propel_config(getenv('ENVIRONMENT'));
 
 try {
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
-		$contact = new \db\Contact();
-		if(!empty($_POST['name'])){
-			$contact->setName($_POST['name']);
+
+		$controller = new \webdev\src\ContactController($_POST);
+		if(!$controller->contact()){
+			throw new Exception("Can't save contact!");
 		}
-		if(!empty($_POST['surname'])) {
-			$contact->setSurname($_POST['surname']);
-		}
-		if(!empty($_POST['email'])){
-			$contact->setEmail($_POST['email']);
-		}
-		$contact->setCreatedAt(date("Y-m-d H:i:s"));
-		$contact->save();
 		echo json_encode(['OK']);
 	}
 }
