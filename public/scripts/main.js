@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // contact jQuery dialog
     var dialog;
@@ -16,12 +16,12 @@ $(document).ready(function() {
             url: 'formSubmit.php',
             data: formData,
             success: function (data) {
-                $( "#dialog-form" ).dialog('close');
+                $("#dialog-form").dialog('close');
             },
             dataType: 'json'
-        }).fail(function(response) {
+        }).fail(function (response) {
             alert('Error: ' + response.responseText);
-            $( "#dialog-form" ).dialog('close');
+            $("#dialog-form").dialog('close');
         });
     }
 
@@ -29,26 +29,33 @@ $(document).ready(function() {
      * Get list of fields with ajax
      */
     $.ajax({
-        url:'formFields.php',
-        type:'get',
-        dataType:'json',
-        success:function(data) {
-            for (var el in data){
+        url: 'formFields.php',
+        type: 'get',
+        dataType: 'json',
+        success: function (data) {
+            for (var el in data) {
                 var field = data[el];
-                var row     = $("<div>").attr({ class: 'row' });
-                var cempty   = $("<div>").attr({ class: 'col-sm-3 col-padding' });
-                var cleft   = $("<div>").attr({ class: 'col-sm-4 text-right col-padding' });
-                var cright  = $("<div>").attr({ class: 'col-sm-5 col-padding' });
-                var cright_inner = $("<div>").attr({ class: 'pull-right' });
+                var row = $("<div>").attr({class: 'row'});
+                var cempty = $("<div>").attr({class: 'col-sm-3 col-padding'});
+                var cleft = $("<div>").attr({class: 'col-sm-4 text-right col-padding'});
+                var cright = $("<div>").attr({class: 'col-sm-5 col-padding'});
+                var cright_inner = $("<div>").attr({class: 'pull-right'});
 
-                var label = $("<label/>").attr({ class: 'form-label' }).text(field.label);
-                var field = $('<input/>').attr({ type: 'text', id: field.name, name: field.name, class: 'form-text', required: true, maxtength: 100})
+                var label = $("<label/>").attr({class: 'form-label'}).text(field.label);
+                var field = $('<input/>').attr({
+                    type: 'text',
+                    id: field.name,
+                    name: field.name,
+                    class: 'form-text',
+                    required: true,
+                    maxtength: 100
+                })
 
                 cempty.appendTo(row);
                 cleft.append(label).appendTo(row);
                 cright_inner.append(field);
                 cright_inner.append(field).appendTo(row);
-                $( "#contact-submit-row" ).before(row);
+                $("#contact-submit-row").before(row);
             }
         }
     });
@@ -57,7 +64,7 @@ $(document).ready(function() {
      * Init jQuery dialog
      * @type {*|jQuery}
      */
-    dialog = $( "#dialog-form" ).dialog({
+    dialog = $("#dialog-form").dialog({
         autoOpen: false,
         height: 'auto',
         width: 750,
@@ -65,11 +72,11 @@ $(document).ready(function() {
         dialogClass: 'no-title',
         //Close dialog onClick (anywhere)
         open: function () {
-            $('#info-row').bind('click', function() {
-                $( "#dialog-form" ).dialog('close');
+            $('#info-row').bind('click', function () {
+                $("#dialog-form").dialog('close');
             })
         },
-        close: function() {
+        close: function () {
         }
     });
 
@@ -88,10 +95,10 @@ $(document).ready(function() {
         messages: {
             email: "Correct email is required"
         },
-        submitHandler: function(form, event) {
+        submitHandler: function (form, event) {
             event.preventDefault();
             var formData = {};
-            $("form :input[type=text]").each(function(){
+            $("form :input[type=text]").each(function () {
                 formData[$(this).attr('name')] = $(this).val();
             });
 
@@ -102,9 +109,9 @@ $(document).ready(function() {
     // Check first time visit
     //if (visited == null) {
     if (true) {
-        dialog.dialog( "open" );
+        dialog.dialog("open");
     }
 
     // set cookie
-    $.cookie('visited', 'yes', { expires: 1, path: '/' });
+    $.cookie('visited', 'yes', {expires: 1, path: '/'});
 });
