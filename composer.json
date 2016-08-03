@@ -3,7 +3,7 @@
     "description": "Pinguin AG WebDevTest 2016",
     "type": "library",
     "require": {
-        "propel/propel": "^2.0@alpha"
+        "doctrine/orm": "2.5.*"
     },
     "require-dev": {
         "phpunit/phpunit": "5.4.*",

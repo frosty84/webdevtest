@@ -11,3 +11,5 @@ define('APP_BASEPATH', dirname(__FILE__) . '/../');
 //specify autoload
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
+$entityManager = getEntityManager();
+

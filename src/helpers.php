@@ -1,30 +1,16 @@
 <?php
 
+use Doctrine\ORM\Tools\Setup;
+use Doctrine\ORM\EntityManager;
+
 /**
- * Returns actual config merged with default one
+ * Load corresponding configuration file
  * @param $env
  * @return array
  */
-function load_config()
+function load_db_config($env)
 {
-    //config init
-    $defaultConfig = [];
-
-    $defaultConfigPath = APP_BASEPATH . '/config/default.php';
-
-    if (is_readable($defaultConfigPath)) {
-        require_once $defaultConfigPath;
-    }
-
-    return $defaultConfig;
-}
-
-/**
- * Load corresponding propel configuration file
- * @param $env
- */
-function load_propel_config($env)
-{
+    $dbParams = [];
     //picking up corresponding config file
     switch ($env) {
         case 'dev':
@@ -37,6 +23,24 @@ function load_propel_config($env)
     }
     $configPath = APP_BASEPATH . '/config/' . $configName;
     if (is_readable($configPath)) {
-        require_once $configPath;
+        include $configPath;
     }
+    else {
+        throw new Exception("Configuration is not readable!");
+    }
+    return $dbParams;
+}
+
+function getEntityManager() {
+
+    $paths = array(APP_BASEPATH . '/db');
+    $isDevMode = true;
+
+    $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+
+    $dbParams = load_db_config(getenv('ENVIRONMENT'));
+
+    $entityManager = EntityManager::create($dbParams, $config);
+
+    return $entityManager;
 }
