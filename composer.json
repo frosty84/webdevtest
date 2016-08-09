@@ -3,7 +3,8 @@
     "description": "Pinguin AG WebDevTest 2016",
     "type": "library",
     "require": {
-        "doctrine/orm": "2.5.*"
+        "doctrine/orm": "2.5.*",
+        "symfony/console": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "5.4.*",
@@ -12,7 +13,7 @@
     "autoload": {
         "psr-4": {
             "webdev\\src\\": "src/",
-            "db\\": "db/generated-classes"
+            "db\\": "db/"
         },
         "files": ["src/helpers.php"]
     },

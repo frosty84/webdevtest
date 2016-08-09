@@ -33,10 +33,10 @@ function load_db_config($env)
 
 function getEntityManager() {
 
-    $paths = array(APP_BASEPATH . '/db');
+    $paths = array(APP_BASEPATH . 'db');
     $isDevMode = true;
 
-    $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode);
+    $config = Setup::createAnnotationMetadataConfiguration($paths, $isDevMode, null, null, false);
 
     $dbParams = load_db_config(getenv('ENVIRONMENT'));
 
@@ -44,3 +44,10 @@ function getEntityManager() {
 
     return $entityManager;
 }
+
+function getFields(){
+    $entityManager = getEntityManager();
+    $ffRepository = $entityManager->getRepository('db\Formfields');
+    return $ffRepository->findAll();
+}
+

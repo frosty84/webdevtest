@@ -1,7 +1,7 @@
 <?php
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 
-require_once dirname(__FILE__) . '/../src/bootstrap.php';
+require_once dirname(__FILE__) . '/src/bootstrap.php';
 
 $entityManager = getEntityManager();
 

@@ -2,19 +2,17 @@
 
 require_once dirname(__FILE__) . '/../src/bootstrap.php';
 
-//get current config
-$config = load_config();
-//load db config
-load_propel_config(getenv('ENVIRONMENT'));
-
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $controller = new \webdev\src\ContactController($_POST);
-        if (!$controller->contact()) {
+        $id = $controller->contact();
+        if (!$id) {
             throw new Exception("Can't save contact!");
         }
-        echo json_encode(['OK']);
+        else {
+            echo json_encode(['status' => 'OK', 'id' => $id]);
+        }
     }
 } catch (Exception $e) {
     header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);

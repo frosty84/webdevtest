@@ -3,6 +3,8 @@
 namespace webdev\src;
 
 use db\Contact;
+use db\Formsubmit;
+use db\Formsubmitdata;
 
 
 /**
@@ -17,29 +19,53 @@ class ContactController extends Controller
      */
     public function contact()
     {
-        list($name, $surname, $email) = $this->prepareArguments();
+        $arguments  = $this->prepareArguments(getFields());
+        $formSubmitObj = $this->getNewFormSubmit();
+        if($formSubmitObj instanceof Formsubmit) {
 
-        $contact = $this->buildContactObject();;
-        $contact->setName($name);
-        $contact->setSurname($surname);
-        $contact->setEmail($email);
-        $contact->setCreatedAt(date("Y-m-d H:i:s"));
-        $ret = $contact->save();
+            foreach ($arguments as $name => $value) {
+                $data = new Formsubmitdata();
 
-        return $ret;
+                $data->setFormsubmit($formSubmitObj);
+                $data->setName($name);
+                $data->setValue($value);
+
+                $formSubmitObj->addFormsubmitdata($data);
+            }
+
+            $entityManager = getEntityManager();
+            $entityManager->persist($formSubmitObj);
+            $entityManager->flush();
+        }
+        return $formSubmitObj->getId();
+    }
+
+    protected function getNewFormSubmit(){
+        $data = new Formsubmit();
+
+        $data->setDate(new \DateTime());
+
+        //$entityManager = getEntityManager();
+        //$entityManager->persist($data);
+        //$entityManager->flush();
+
+        return $data;
     }
 
     /**
      * PhpUnit friendly wrapper to gather list of arguments
      * @return array
      */
-    protected function prepareArguments()
+    protected function prepareArguments($fields = [])
     {
-        $name = $this->getArgument('name');
-        $surname = $this->getArgument('surname');
-        $email = $this->getArgument('email');
+        $arguments = [];
 
-        return array($name, $surname, $email);
+        foreach ($fields as $field) {
+            $name = $field->getName();
+            $arguments[$name] = $this->getArgument($name);
+        }
+
+        return $arguments;
     }
 
     /**

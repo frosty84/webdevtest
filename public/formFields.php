@@ -2,10 +2,12 @@
 
 require_once dirname(__FILE__) . '/../src/bootstrap.php';
 
-$dummyFields = [
-    ['name' => 'name', 'label' => 'first name'],
-    ['name' => 'surname', 'label' => 'surname'],
-    ['name' => 'email', 'label' => 'email address']
-];
+$dummyFields = [];
+
+$fields = getFields();
+
+foreach ($fields as $field) {
+    $dummyFields[] = ['name' => $field->getName(), 'label' => $field->getLabel()];
+}
 
 echo json_encode($dummyFields);
