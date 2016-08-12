@@ -45,10 +45,6 @@ class ContactController extends Controller
 
         $data->setDate(new \DateTime());
 
-        //$entityManager = getEntityManager();
-        //$entityManager->persist($data);
-        //$entityManager->flush();
-
         return $data;
     }
 
